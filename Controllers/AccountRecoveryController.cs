@@ -467,9 +467,6 @@ namespace AuthApi.Controllers
                     .FirstOrDefault();
             }
 
-            _logger.LogWarning("ExistAPendingRequest: {exist}", accountRecovery != null);
-            _logger.LogWarning("ExistAPendingRequest value: {exist}", accountRecovery?.ToString() ?? "null");
-
             return accountRecovery != null;
         }
         #endregion

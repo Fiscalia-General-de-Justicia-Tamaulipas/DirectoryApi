@@ -454,7 +454,7 @@ namespace AuthApi.Controllers
             {
                 accountRecovery = context.AccountRecoveryRequests
                     .Where(item => EF.Functions.Like(item.Curp!, request.Curp))
-                    .Where(item => item.AttendingAt == null || item.DeletedAt == null)
+                    .Where(item => item.AttendingAt == null && item.DeletedAt == null)
                     .OrderByDescending( item => item.CreatedAt)
                     .FirstOrDefault();
             }
@@ -462,10 +462,13 @@ namespace AuthApi.Controllers
             {
                 accountRecovery = context.AccountRecoveryRequests
                     .Where(item => EF.Functions.Like(item.ContactEmail!, request.ContactEmail))
-                    .Where(item => item.AttendingAt == null || item.DeletedAt == null)
+                    .Where(item => item.AttendingAt == null && item.DeletedAt == null)
                     .OrderByDescending( item => item.CreatedAt)
                     .FirstOrDefault();
             }
+
+            _logger.LogWarning("ExistAPendingRequest: {exist}", accountRecovery != null);
+            _logger.LogWarning("ExistAPendingRequest value: {exist}", accountRecovery?.ToString() ?? "null");
 
             return accountRecovery != null;
         }

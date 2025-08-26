@@ -22,6 +22,7 @@ namespace AuthApi.Services
                 from = emailSettings.From,
                 to = emailDestination,
                 subject = subject,
+                template ="fiscalia-digital",
                 message = data.ToString()
             };
 
@@ -45,7 +46,7 @@ namespace AuthApi.Services
                 logger.LogError("Failed to send email. Status code: {statuscode}", response.StatusCode );
                 throw new Exception($"Can't send the email, bad response: {response.StatusCode}" );
             }
-            
+
             // Process response
             return await response.Content.ReadAsStringAsync();
         }

@@ -123,7 +123,7 @@ namespace AuthApi.Controllers
             {
                 return UnprocessableEntity( new {
                     Title = "Uno o mas campos tienen error.",
-                    Errors = new Dictionary<string, object> {{"identification_number", "Un documento con le mismo folio ya se encuentra registrado."}}
+                    Errors = new Dictionary<string, object> {{"identification_number", "El documento ya se encuentra registrado. Por favor, agregue otro documento de identificación."}}
                 });
             }
 
@@ -132,7 +132,7 @@ namespace AuthApi.Controllers
             {
                 return UnprocessableEntity( new {
                     Title = "Uno o mas campos tienen error.",
-                    Errors = new Dictionary<string, object> {{"file", "El documento ya se encuentra registrado."}}
+                    Errors = new Dictionary<string, object> {{"file", "El documento ya se encuentra registrado. Por favor, agregue otro documento."}}
                 });
             }
 
